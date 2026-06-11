@@ -2,7 +2,7 @@ version: 0.2
 
 phases:
 
-  pre_build:   
+  pre_build:
     commands:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 561742675687.dkr.ecr.us-east-1.amazonaws.com/rukayat-portfolio
@@ -15,7 +15,7 @@ phases:
       - echo Tagging the Docker image...
       - docker tag rukayat-portfolio:latest 561742675687.dkr.ecr.us-east-1.amazonaws.com/rukayat-portfolio:latest
 
-  post_build:    
+  post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image to ECR...
