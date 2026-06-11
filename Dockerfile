@@ -1,6 +1,6 @@
 
 # Step 1: Use the official Nginx image as the base.
-FROM nginx:alpine
+FROM public.ecr.aws/nginx/nginx:alpine
 
 # Step 2: Remove the default Nginx welcome page so it doesn't interfere with our files.
 RUN rm -rf /usr/share/nginx/html/*
