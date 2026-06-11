@@ -9,20 +9,14 @@ phases:
 
   build:
     commands:
-      - echo Build started on `date`
-      - echo Building the Docker image...
+      - echo Building...
       - docker build -t rukayat-portfolio .
-      - echo Tagging the Docker image...
       - docker tag rukayat-portfolio:latest 561742675687.dkr.ecr.us-east-1.amazonaws.com/rukayat-portfolio:latest
 
   post_build:
     commands:
-      - echo Build completed on `date`
-      - echo Pushing the Docker image to ECR...
       - docker push 561742675687.dkr.ecr.us-east-1.amazonaws.com/rukayat-portfolio:latest
-      - echo Creating imagedefinitions.json...
       - echo '[{"name":"portfolio-container","imageUri":"561742675687.dkr.ecr.us-east-1.amazonaws.com/rukayat-portfolio:latest"}]' > imagedefinitions.json
-      - echo Done!
 
 artifacts:
   files:
