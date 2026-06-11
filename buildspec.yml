@@ -5,7 +5,7 @@ phases:
   pre_build:   
     commands:
       - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin YOUR_ECR_URI_HERE
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 561742675687.dkr.ecr.us-east-1.amazonaws.com/rukayat-portfolio
 
   build:
     commands:
@@ -13,15 +13,15 @@ phases:
       - echo Building the Docker image...
       - docker build -t rukayat-portfolio .
       - echo Tagging the Docker image...
-      - docker tag rukayat-portfolio:latest YOUR_ECR_URI_HERE:latest
+      - docker tag rukayat-portfolio:latest 561742675687.dkr.ecr.us-east-1.amazonaws.com/rukayat-portfolio:latest
 
   post_build:    
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image to ECR...
-      - docker push YOUR_ECR_URI_HERE:latest
+      - docker push 561742675687.dkr.ecr.us-east-1.amazonaws.com/rukayat-portfolio:latest
       - echo Creating imagedefinitions.json...
-      - echo '[{"name":"portfolio-container","imageUri":"YOUR_ECR_URI_HERE:latest"}]' > imagedefinitions.json
+      - echo '[{"name":"portfolio-container","imageUri":"561742675687.dkr.ecr.us-east-1.amazonaws.com/rukayat-portfolio:latest"}]' > imagedefinitions.json
       - echo Done!
 
 artifacts:
